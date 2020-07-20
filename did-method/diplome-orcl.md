@@ -1,17 +1,17 @@
-# DIPLOME-ORCL DID Method Specification
+# 1. Introduction
 
-## Author
+## 1.1 Author
 
 -   Diplome Team: <https://www.diplo-me.eu/about-us/index.html>
 
-## Preface
+## 1.2 Preface
 
 The diplome-orcl DID method specification conforms to the requirements specified in 
 the [DID specification](https://w3c-ccg.github.io/did-core/), currently published by the 
 W3C Credentials Community Group. For more information about DIDs and DID method specifications, 
 please see the [DID Primer](https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-fall2017/blob/master/topics-and-advance-readings/did-primer.md)
 
-## Abstract
+## 1.3 Abstract
 
 Decentralized Identifiers (DIDs, see [1]) within Diplome ecosystem enables verifiable, decentralized digital identification, designed to be compatible with any distributed ledger or network.
 In the Diplome community, the Certification Authorities are entities entitled to issue qualification titles, thus are certified issuers of digital certifications. 
@@ -22,28 +22,28 @@ The described DID method details the verification process of an Organization ide
 
 For a reference implementation of this DID method specification see [2].
 
-## JSON-LD Context Definition
->Note, this DID method specification uses the `Secp256k1VerificationKey2018`, `Secp256k1SignatureAuthentication2018` types and an `ethereumAddress` instead of a `publicKeyHex`.
->
->The definition of the ethr DID JSON-LD context is:
->
->  {
->    "@context":
->    {
->      "ethereumAddress": "https://github.com/decentralized-identity/ethr-did-resolver#ethereumAddress",
->      "Secp256k1VerificationKey2018": "https://github.com/decentralized-identity/ethr-did-resolver#Secp256k1VerificationKey2018",
->      "Secp256k1SignatureAuthentication2018": "https://github.com/decentralized-identity/ethr-did-resolver#Secp256k1VerificationKey2018",
->    }
->  }
+## 1.4 JSON-LD Context Definition
+The definition of the ethr DID JSON-LD context is:
 
-## DID Method Name
+  {
+    "@context":
+    {
+      "ethereumAddress": "https://github.com/decentralized-identity/ethr-did-resolver#ethereumAddress",
+      "Secp256k1VerificationKey2018": "https://github.com/decentralized-identity/ethr-did-resolver#Secp256k1VerificationKey2018",
+      "Secp256k1SignatureAuthentication2018": "https://github.com/decentralized-identity/ethr-did-resolver#Secp256k1VerificationKey2018",
+    }
+  }
+>Note, this DID method specification uses the `Secp256k1VerificationKey2018`, `Secp256k1SignatureAuthentication2018` types and an `ethereumAddress` instead of a `publicKeyHex`.
+
+# 2. DIPLOME-ORCL DID Method Specification
+## 2.1 DID Method Name
 
 The namestring that shall identify this DID method is: `diplome-orcl`
 
 A DID that uses this method MUST begin with the following prefix: `did:diplome-orcl`. Per the DID specification, this string 
 MUST be in lowercase. The remainder of the DID, after the prefix, is specified below.
 
-## DID Schema
+## 2.2 DID Schema
 
 A Decentralized Identifier is defined as a [RFC3986](https://tools.ietf.org/html/rfc3986)
 Uniform Resource Identifier, with a format based on the generic DID schema. Fore more
@@ -76,9 +76,9 @@ hexDigit = "0" / "1" / "2" / "3" / "4" / "5" / "6" / "7" / "8" / "9" / "a" / "b"
 
 > Note: it is assumed that the DID is anchored on the Diplome DLT network. 
 
-## CRUD Operation Definitions
+## 2.3 CRUD Operation Definitions
 
-### Create (Register Organization)
+### 2.3.1 Create (Register Organization)
 
 In order to create a `diplome-orcl` DID, a Certificate Authority (Organization), key pair, needs to be generated together with related ethereum wallet. At this point, one interaction with Diplome network is needed in order to register Organization on the Oracle CAVerification.
 
@@ -89,7 +89,7 @@ In order to create a new Certification Authority it's needed to invoke the relev
 
 >Note: for security constraints only Diplome Organization can create new Certification Authorities
 
-### Read
+### 2.3.2 Read
 
 The Certification Autority can be verified as resolution of diplome-orcl DID by using read only functions and contract events on CAVerifier (Oracle Smart Contract).
 
@@ -101,7 +101,7 @@ In order to retrieve details about Certification Authority, it can be invoked th
 
  * `function getCaDetails(string calldata caDid) external view returns (string memory name,bool active,string memory pubkey,string memory did,string memory whedId, uint existFrom, uint existTo);`
 
-### Update
+### 2.3.3 Update
 
 The Certification Authority may be updated by invoking the relevant CAVerifier (Oracle Smart Contract) functions as defined by the ERC725 standard:
 
@@ -110,7 +110,7 @@ The Certification Authority may be updated by invoking the relevant CAVerifier (
 
 >Note: these methods are written in the Solidity language. Ethereum smart contracts are executed as binary code running in the Ethereum Virtual Machine (EVM). For security constraints only Diplome Organization can update Certification Authorities
 
-### Delete (Revoke) 
+### 2.3.4 Delete (Revoke) 
 
 Revoking the Certification Authority can be supported by executing the metod to disable de CA:
 
@@ -119,7 +119,7 @@ Revoking the Certification Authority can be supported by executing the metod to 
 >Note: for security constraints only Diplome Organization can delete (revoke) Certification Authorities
 
 
-## DID Resolution
+## 2.4 DID Resolution
 
 The simplest mechanism to resolve a particular DID instance to the latest published
 version of its corresponding DID Document is using the agent's HTTP interface.
@@ -139,7 +139,7 @@ response will be latest version available of its corresponding DID Document enco
 in JSON-LD with a __200__ status code. If no information is available the response
 will be a JSON encoded error message with a __404__ status code.
 
-## References
+# References
 
  **[1]** <https://w3c-ccg.github.io/did-core/>
 
