@@ -10,6 +10,7 @@ Author:
 
 ### 1. Decentralized Identifiers
 Decentralized Identifiers (DIDs, see [1]) within Diplo*me* ecosystem enables verifiable, decentralized digital identification, designed to be compatible with any distributed ledger or network.
+
 In the Diplo*me* community, *Certification Authorities* (CA) are entities entitled to issue qualification titles, thus are certified issuers of digital certifications. 
 Certification Authorities are entities sub-sets of a more general group defined as '*Organizations*': in Diplo*me*, certified organizations are listed in an open, accessible registry that enables any verifier to check the authenticity and characteristics of such organization.
 This registry is managed by an oracle within Diplo*me* ecosystem (Diplo*me* oracle smart contract) that is the the verifier of CA issuers. 
