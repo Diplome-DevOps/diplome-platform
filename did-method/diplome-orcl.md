@@ -1,5 +1,5 @@
 
-# DID Method
+# DID Method - Version 1.1
 The present document describes the "diplome-orcl" DID Method specification.
 The ***diplome-orcl*** DID method specification conforms to the requirements specified in the [DID specification](https://w3c-ccg.github.io/did-core/), currently published by the  W3C Credentials Community Group. For more information about DIDs and DID method specifications, 
 please see the [DID Primer](https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust-fall2017/blob/master/topics-and-advance-readings/did-primer.md)
